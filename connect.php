@@ -38,13 +38,6 @@
 				padding-left: 7%;
 			}
 		}
-		@media(min-width: 992px)
-		{
-			html,body
-			{
-				overflow: hidden;
-			}
-		}
 	</style>
 </head>
 <body>
@@ -74,7 +67,7 @@
 				<div class="col-12 col-md-6 col-lg-4"> 
 						<div class="row">
 							  <div class="col-12" style="font-size: 13px;">
-							  		Adresse Mail*
+							  		CNI*
 							  </div>
 							  <div class="col-12">
 							  		<input type="email" name="login" class="form-control">
@@ -97,30 +90,35 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true" style="overflow: hidden;">
+  aria-hidden="true">
 
   <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document">
 
 
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Inscription</h5>
+      <div class="modal-header aqua-gradient">
+        <h5 class="modal-title" id="exampleModalLongTitle" style="color: white;font-weight: bolder;"><i class="fas fa-plus"></i>&nbsp;Inscription</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+<form method="post" action="f_subscribe.php" enctype="multipart/form-data"> 
       <div class="modal-body">
         <?php include 'inscription_form.php'; ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-info" data-dismiss="modal">FERMER</button>
-        <button type="button" class="btn aqua-gradient">INSCRIPTION</button>
+        <button type="submit" disabled="" id="go" class="btn aqua-gradient"><i class="fas fa-chevron-circle-right"></i>&nbsp;INSCRIPTION</button>
+</form>
       </div>
     </div>
   </div>
 </div>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script type="text/javascript" src="assets/js/all.js"></script>	
+		<script type="text/javascript">
+
+		</script>
 </body>
 </html>

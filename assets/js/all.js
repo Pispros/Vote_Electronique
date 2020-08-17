@@ -27,3 +27,42 @@ $(function()
 				});
 	});
 });
+
+				 function _VerifyP(arg) 
+				 {
+				 	if (arg.value === document.getElementById('pwd').value) 
+				 	{
+				 		document.getElementById('go').disabled = false;
+				 		document.getElementById('pwd').classList.remove('is-invalid');
+				 		document.getElementById('pwd').classList.add('is-valid');
+				 		document.getElementById('cpwd').classList.remove('is-invalid');
+				 		document.getElementById('cpwd').classList.add('is-valid');
+				 	}
+				 	else
+				 	{
+				 		document.getElementById('go').disabled = true;
+				 		document.getElementById('pwd').classList.add('is-invalid');
+				 		document.getElementById('pwd').classList.remove('is-valid');
+				 		document.getElementById('cpwd').classList.add('is-invalid');
+				 		document.getElementById('cpwd').classList.remove('is-valid');
+				 	}
+				 }
+				 function _VerifyP_2(arg) 
+				 {
+				 	if (arg.value === document.getElementById('cpwd').value) 
+				 	{
+				 		document.getElementById('go').disabled = false;
+				 		document.getElementById('pwd').classList.remove('is-invalid');
+				 		document.getElementById('pwd').classList.add('is-valid');
+				 		document.getElementById('cpwd').classList.remove('is-invalid');
+				 		document.getElementById('cpwd').classList.add('is-valid');
+				 	}
+				 	else
+				 	{
+				 		document.getElementById('go').disabled = true;
+				 		document.getElementById('pwd').classList.add('is-invalid');
+				 		document.getElementById('pwd').classList.remove('is-valid');
+				 		document.getElementById('cpwd').classList.add('is-invalid');
+				 		document.getElementById('cpwd').classList.remove('is-valid');
+				 	}
+				 }
