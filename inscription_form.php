@@ -77,7 +77,7 @@
 	  			  		Date Naissance
 	  			  </div>
 	  			  <div class="col-12">
-	  			  		<input required="" type="text" name="ddn" class="form-control myI">
+	  			  		<input required="" type="text" autocomplete="off" name="ddn" class="form-control myI date">
 	  			  </div>
 	  		</div>
 	  </div>
@@ -220,8 +220,20 @@
 	  			  	    Date Inscription
 	  			  </div>
 	  			  <div class="col-12">
-	  			  		<input required="" type="text" name="cni" class="form-control myI">
+	  			  		<input required="" autocomplete="off" type="text" name="cni" class="form-control myI date">
 	  			  </div>
 	  		</div>
 	  </div>
 </div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function() 
+            {
+                $(".date").datepicker(
+                {
+                    dateFormat: 'yy-mm-dd'
+                });
+            });
+</script>
