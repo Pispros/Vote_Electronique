@@ -66,3 +66,12 @@ $(function()
 				 		document.getElementById('cpwd').classList.remove('is-valid');
 				 	}
 				 }
+function AlterPage(arg) 
+{
+	document.getElementById('loader_gif').style.display = 'inline';
+	setTimeout(function() 
+	{
+		document.getElementById('loader_gif').style.display = 'none';
+		document.getElementById('frameset').src = arg;
+	},1500)
+}

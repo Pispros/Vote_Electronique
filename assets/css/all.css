@@ -48,3 +48,39 @@
 		left: 10%;
 	}
 }
+.hoverB
+{
+	cursor: pointer;
+	transition: all .5s;
+	display: flex;justify-content: center;align-items: center;
+	position: relative;
+	top: -20px;
+}
+.hoverB:hover
+{
+	background-color: #eee;
+}
+.layout
+{
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	padding: 10px;
+}
+.left_layout
+{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 20%;
+	background-color:#4db6ac;
+}
+.right_layout
+{
+	width: 79%;
+	margin-left: 1%;
+	border-radius: 30px;
+	padding: 5px;
+	-webkit-box-shadow: 2px 2px 13px 5px rgba(0,0,0,0.23); 
+	box-shadow: 2px 2px 13px 5px rgba(0,0,0,0.23);
+}

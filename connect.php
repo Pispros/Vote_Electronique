@@ -117,8 +117,5 @@
 </div>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script type="text/javascript" src="assets/js/all.js"></script>	
-		<script type="text/javascript">
-
-		</script>
 </body>
 </html>
