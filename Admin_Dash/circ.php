@@ -1,5 +1,8 @@
 <?php 
+	include '../bd.php';
 
+	$query = $pdo->query("SELECT * FROM circonscription");
+	$rows  = $query->fetchAll(PDO::FETCH_NUM);
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +29,7 @@
 		html,body
 		{
 			overflow-x: hidden;
+			padding: 5px;
 		}
 		.intitule
 		{
@@ -37,26 +41,181 @@
 		}
 		.myI
 		{
-			border-color: #aed581;
+			border-color: #bdbdbd;
 		}
 		input
 		{
 			margin-bottom: 15px;
 		}
+		tr td,th
+		{
+			text-align: center;
+			font-weight: bolder;
+		}
 	</style>
 </head>
 <body>
-		<div class="row d-flex justify-content-around" id="personne">
+		<div class="row d-flex justify-content-start">
+			 <div class="col-auto">
+			 		<span style="font-size: 25px;color: #4db6ac;">Administration > Circonscriptions </span>
+			 </div>
+		</div>
+		<div class="row d-flex justify-content-center">
+			 <div class="col-auto">
+			 		<button type="button" data-toggle="modal" data-target="#basicExampleModal" title="Lister Les Circonscription" class="btn btn-outline-info"><i class="fas fa-clipboard-list fa-3x"></i>&nbsp;</button>
+			 </div>
+		</div>
+		<br><br>
+<form method="post" action="./options/admin_options.php?action=new_circ" enctype="multipart/form-data" onsubmit="RecallPath();">
+		<div class="row d-flex justify-content-around">
 		  <div class="col-12 col-md-5">
 		  		<div class="row">
 		  			  <div class="col-12 intitule">
-		  			  	    CNI
+		  			  	   Commune
 		  			  </div>
 		  			  <div class="col-12">
-		  			  		<input required="" type="text" name="cni" class="form-control myI">
+		  			  		<input required="" type="text" name="comm" class="form-control myI">
 		  			  </div>
 		  		</div>
 		  </div>
+		  <div class="col-12 col-md-5">
+		  		<div class="row">
+		  			  <div class="col-12 intitule">
+		  			  	   Libellé Circonscription
+		  			  </div>
+		  			  <div class="col-12">
+		  			  		<input required="" type="text" name="circ" class="form-control myI">
+		  			  </div>
+		  		</div>
+		  </div>
+		  <div class="col-12 col-md-5">
+		  		<div class="row">
+		  			  <div class="col-12 intitule">
+		  			  	   Arrondissement
+		  			  </div>
+		  			  <div class="col-12">
+		  			  		<input required="" type="text" name="arr" class="form-control myI">
+		  			  </div>
+		  		</div>
+		  </div>
+		  <div class="col-12 col-md-5">
+		  		<div class="row">
+		  			  <div class="col-12 intitule">
+		  			  	   Département
+		  			  </div>
+		  			  <div class="col-12">
+		  			  		<input required="" type="text" name="depar" class="form-control myI">
+		  			  </div>
+		  		</div>
+		  </div>
+		  <div class="col-12 col-md-5">
+		  		<div class="row">
+		  			  <div class="col-12 intitule">
+		  			  	   Région
+		  			  </div>
+		  			  <div class="col-12">
+		  			  		<input required="" type="text" name="region" class="form-control myI">
+		  			  </div>
+		  		</div>
+		  </div>
+		  <div class="col-12 col-md-5">
+		  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  		Pays
+	  			  </div>
+	  			  <div class="col-12">
+		  			  		<input required="" type="text" name="pays" class="form-control myI">
+		  		  </div>
+	  		</div>
+		  </div>
 		</div>
+		<br>
+		<div class="row d-flex justify-content-center">
+			 <div class="col-auto">
+			 		<button type="submit" title="Enregistrer" class="btn btn-outline-info rounded-pill"><i class="far fa-paper-plane fa-2x"></i></i>&nbsp;</button>
+			 </div>
+		</div>
+</form>
+<!-- Modal List-->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header aqua-gradient">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white;font-weight: bolder;"><i class="fas fa-scroll"></i>&nbsp;Liste des Circonscriptions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        	<table class="table table-hover table-responsive">
+        			<tr>
+        				<th class="">Commune</th>
+        				<th class="th-lg">Circonscription</th>
+        				<th class="th-lg">Arrondissement</th>
+        				<th class="">Département</th>
+        				<th class="th-lg">Région</th>
+        				<th class="th-lg">Pays</th>
+        			</tr>
+        			<?php 
+        				foreach ($rows as $r) 
+        				{
+        			?>
+        					<tr>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[1]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[2]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[3]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[4]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[5]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[6]; ?>
+        						</td>
+        					</tr>
+        			<?php 
+        				}
+        			?>
+        	</table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn aqua-gradient" data-dismiss="modal">FERMER</button>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+
+	if (sessionStorage.getItem('last_path')) 
+	{
+		sessionStorage.removeItem('last_path');
+	}
+
+	function RecallPath() 
+	{
+		sessionStorage.setItem('last_path',window.location);
+	}
+			$(function() 
+            {
+                $(".date").datepicker(
+                {
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "1900:2030"
+                });
+            });
+</script>
 </body>
 </html>

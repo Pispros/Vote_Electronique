@@ -40,6 +40,26 @@
 			  		<iframe id="frameset" src="" style="border:unset;border-radius: 15px;width: 100%;height: 100%;"></iframe>
 			  </div>
 		</div>
+		<!-- Modal Options-->
+<div class="modal fade" id="basicExampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header aqua-gradient">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white;font-weight: bolder;"><i class="fas fa-users"></i>&nbsp;Liste des Candidats</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          
+      <div class="modal-footer">
+        <button type="button" onclick="Delete();" class="btn btn-outline-danger rounded-pill">Supprimer</button>
+        <button type="button" class="btn btn-outline-info rounded-pill" data-dismiss="modal">FERMER</button>
+      </div>
+    </div>
+  </div>
+</div>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script type="text/javascript" src="../assets/js/all.js"></script>	
 		<script type="text/javascript">

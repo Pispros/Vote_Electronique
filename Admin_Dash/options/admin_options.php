@@ -39,21 +39,29 @@
 				$op = "Nouveau Parti ajouté";
 				$ok = 1;
 			}
-			if ($_REQUEST['action']=='') 
+			if ($_REQUEST['action']=='new_circ') 
 			{
-				
+				$pdo->query("INSERT INTO circonscription VALUES (0,'".$_POST['comm']."','".$_POST['circ']."','".$_POST['arr']."','".$_POST['depar']."','".$_POST['region']."','".$_POST['pays']."')");
+				$op = "Nouvelle Circonscription ajoutée";	
+				$ok = 1;
 			}
-			if ($_REQUEST['action']=='') 
+			if ($_REQUEST['action']=='new_elec') 
 			{
 				
+				$pdo->query("INSERT INTO type_election VALUES (0,'".$_POST['election']."','".$_POST['poste']."','".$_POST['dateO']."','".$_POST['dateF']."',0,'',0)");
+				$op = "Nouvelle Election ajoutée";	
+				$ok = 1;
 			}
-			if ($_REQUEST['action']=='') 
+			if ($_REQUEST['action']=='conf_elec') 
 			{
-				
-			}
-			if ($_REQUEST['action']=='') 
-			{
-				
+				$list = "";
+				foreach ($_POST['selection'] as $id_parti) 
+				{
+					$list = $list.$id_parti.",";
+				}
+				$pdo->query("UPDATE type_election SET partis='".$list."' WHERE ID='".$_POST['choose_elec']."'");
+				$op = "Liste des partis mise à jour";	
+				$ok = 1;
 			}
 		}
 			catch(Exception $e)

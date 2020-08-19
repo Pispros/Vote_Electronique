@@ -81,9 +81,8 @@
     <li class="menu_pack">
       <span><i class="fas fa-user-tie"></i> Candidature</span>&nbsp;&nbsp;<i class="fas fa-angle-right rotate" style="font-size: 25px;position: relative;top: -9px;"></i>
       <ul class="nested">
-        <li><i class="fas fa-user-plus"></i><div>&nbsp;Candidats</div></li>
-        <li><i class="fas fa-user-minus"></i><div>&nbsp;Candidats</div></li>
-        <li><i class="fas fa-user-cog"></i><div>&nbsp;Candidats</div></li>
+        <li onclick="AlterPage('newc.php')"><i class="fas fa-user-plus"></i><div>&nbsp;Candidats</div></li>
+        <li data-toggle="modal" data-target="#basicExampleModal2"><i class="fas fa-user-minus"></i><div>&nbsp;Candidats</div></li>
       </ul>
     </li>
     <li class="menu_pack" style="cursor: pointer;">

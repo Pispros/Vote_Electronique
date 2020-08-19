@@ -1,5 +1,8 @@
 <?php 
+	include '../bd.php';
 
+	$query = $pdo->query("SELECT * FROM parti_politique");
+	$rows  = $query->fetchAll(PDO::FETCH_NUM);
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,6 +47,11 @@
 		{
 			margin-bottom: 15px;
 		}
+		tr td,th
+		{
+			text-align: center;
+			font-weight: bolder;
+		}
 	</style>
 </head>
 <body>
@@ -54,7 +62,7 @@
 		</div>
 		<div class="row d-flex justify-content-center">
 			 <div class="col-auto">
-			 		<button type="button" data-toggle="modal" data-target="#basicExampleModal" title="Lister les partis" class="btn btn-outline-danger"><i class="fas fa-clipboard-list fa-3x"></i>&nbsp;</button>
+			 		<button type="button" data-toggle="modal" data-target="#basicExampleModal" title="Lister les partis" class="btn btn-outline-info"><i class="fas fa-clipboard-list fa-3x"></i>&nbsp;</button>
 			 </div>
 		</div>
 		<br><br>
@@ -134,20 +142,55 @@
 <!-- Modal List-->
 <div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <div class="modal-header aqua-gradient">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white;font-weight: bolder;"><i class="fas fa-scroll"></i>&nbsp;Liste des Partis politiques</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        	<table class="table table-hover table-responsive">
+        			<tr>
+        				<th class="">LOGO</th>
+        				<th class="th-lg">Nom Parti</th>
+        				<th class="th-lg">Nom Leader</th>
+        				<th class="">Date Création</th>
+        				<th class="th-lg">Devise</th>
+        				<th class="th-lg">But</th>
+        			</tr>
+        			<?php 
+        				foreach ($rows as $r) 
+        				{
+        			?>
+        					<tr>
+        						<td>
+        							<img src="../assets/img/partis/<?php echo $r[4]; ?>" style="width: 50px;height: 50px;border-radius: 50px;">
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[1]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[2]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[3]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[5]; ?>
+        						</td>
+        						<td style="padding-top: 30px;">
+        							<?php echo $r[6]; ?>
+        						</td>
+        					</tr>
+        			<?php 
+        				}
+        			?>
+        	</table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn aqua-gradient" data-dismiss="modal">FERMER</button>
       </div>
     </div>
   </div>

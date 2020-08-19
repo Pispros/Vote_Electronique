@@ -2,8 +2,11 @@ $(function()
 {
 	setTimeout(function() 
 	{
-		document.getElementById('loader').style.display ='none'   ;
-		document.getElementById('faq').style.display    ='inline' ;
+		if (document.getElementById('loader')) 
+		{
+			document.getElementById('loader').style.display ='none'   ;
+			document.getElementById('faq').style.display    ='inline' ;
+		}
 	},7000);
 
 	$('#hover_faq').mouseover(function() 
@@ -30,7 +33,7 @@ $(function()
 
 				 function _VerifyP(arg) 
 				 {
-				 	if (arg.value === document.getElementById('pwd').value) 
+				 	if (arg.value === document.getElementById('pwd').value && arg.value!="") 
 				 	{
 				 		document.getElementById('go').disabled = false;
 				 		document.getElementById('pwd').classList.remove('is-invalid');
@@ -48,8 +51,8 @@ $(function()
 				 	}
 				 }
 				 function _VerifyP_2(arg) 
-				 {
-				 	if (arg.value === document.getElementById('cpwd').value) 
+				 { 
+				 	if (arg.value === document.getElementById('cpwd').value && arg.value!="") 
 				 	{
 				 		document.getElementById('go').disabled = false;
 				 		document.getElementById('pwd').classList.remove('is-invalid');
