@@ -1,5 +1,11 @@
 <?php  
+	include '../bd.php';
 
+	$query = $pdo->query("SELECT * FROM parti_politique");
+	$rows  = $query->fetchAll(PDO::FETCH_NUM);
+
+	$query = $pdo->query("SELECT * FROM circonscription");
+	$rowsc = $query->fetchAll(PDO::FETCH_NUM);
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,6 +53,7 @@
 	</style>
 </head>
 <body>
+
 <div class="row d-flex justify-content-start">
  	<div class="col-auto">
  			<span style="font-size: 25px;color: #4db6ac;">Administration > Nouveau Candidat </span>
@@ -58,6 +65,8 @@
  	</div>
 </div>
 <br>
+<form method="post" action="./options/admin_options.php?action=new_candidat" enctype="multipart/form-data" onsubmit="RecallPath();">
+<input type="hidden" name="rolexxx" value="Admin">
 <div class="row d-flex justify-content-around" id="personne">
 	  <div class="col-12 col-md-5">
 	  		<div class="row">
@@ -135,7 +144,7 @@
 	  			  		Profession
 	  			  </div>
 	  			  <div class="col-12">
-	  			  		<input required="" type="text" name="" class="form-control myI">
+	  			  		<input required="" type="text" name="profession" class="form-control myI">
 	  			  </div>
 	  		</div>
 	  </div>
@@ -152,6 +161,18 @@
 	  			  </div>
 	  		</div>
 	  </div>
+	<!--
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  		Libellé Election
+	  			  </div>
+	  			  <div class="col-12">
+	  			  		<input required="" type="text" id="lib_elec" class="form-control myI">
+	  			  </div>
+	  		</div>
+	  </div>
+	-->
 	  <div class="col-12 col-md-5">
 	  		<div class="row">
 	  			  <div class="col-12 intitule">
@@ -173,16 +194,108 @@
 	  		</div>
 	  </div>
 </div>
+<div class="row d-flex justify-content-around" id="personne">
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  	    Parti Politique
+	  			  </div>
+	  			  <div class="col-12">
+	  			  		<select class="browser-default custom-select myI" name="parti" id="parti">
+						  <?php 
+						  	foreach ($rows as $row) 
+						  	{
+						  ?>
+						  		<option value="<?php echo $row[0]; ?>"><?php echo $row[1]; ?></option>
+						  <?php 
+						  	}
+						  ?>
+						</select>
+	  			  </div>
+	  		</div>
+	  </div>
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  		Choisir votre Circonscription
+	  			  </div>
+	  			   <div class="col-12">
+	  			  		<select class="browser-default custom-select myI" name="circ">
+						  <?php 
+						  	foreach ($rowsc as $row) 
+						  	{
+						  ?>
+						  		<option value="<?php echo $row[0]; ?>"><?php echo $row[2].' ---> '.$row[1]; ?></option>
+						  <?php 
+						  	}
+						  ?>
+						</select>
+	  			  </div>
+	  		</div>
+	  </div>
+	<!--
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  	    Profession de Foi
+	  			  </div>
+	  			  <div class="col-12">
+	  			  		<textarea required="" rows="5" type="text" name="foi" class="form-control myI"></textarea>
+	  			  </div>
+	  		</div>
+	  </div>
+	-->
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  	    Date de Candidature
+	  			  </div>
+	  			  <div class="col-12">
+	  			  		<input required="" type="text" name="date_c" class="form-control myI date">
+	  			  </div>
+	  		</div>
+	  </div>
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  	    Nom
+	  			  </div>
+	  			  <div class="col-12">
+	  			  		<input required="" type="text" name="nom" class="form-control myI">
+	  			  </div>
+	  		</div>
+	  </div>
+	  <div class="col-12 col-md-5">
+	  		<div class="row">
+	  			  <div class="col-12 intitule">
+	  			  	    Prénom
+	  			  </div>
+	  			  <div class="col-12">
+	  			  		<input required="" type="text" name="prenom" class="form-control myI">
+	  			  </div>
+	  		</div>
+	  </div>
+</div>
 <div class="row d-flex justify-content-center">
 	<div class="col-auto">
 		<button type="submit" disabled="" id="go" class="btn aqua-gradient"><i class="fas fa-plus-circle"></i>&nbsp;Ajouter</button>
 	</div>
 </div>
+</form>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript" src="../assets/js/all.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
+	if (sessionStorage.getItem('last_path')) 
+	{
+		sessionStorage.removeItem('last_path');
+	}
+
+	function RecallPath() 
+	{
+		sessionStorage.setItem('last_path',window.location);
+	}
 	$(function() 
             {
                 $(".date").datepicker(

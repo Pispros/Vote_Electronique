@@ -71,9 +71,9 @@
 	</style>
 </head>
 <body style="height: 100vh;">
-		<div class="row d-flex justify-content-around align-items-center" style="height: 100%;">
+		<div class="row d-flex justify-content-around align-items-center Slide_Left" style="height: 100%;">
 		  <div class="col-auto">
-		  		<div class="rounded-circle hoverB" data-toggle="modal" data-target="#basicExampleModal2" style="width: 150px;height: 150px;" title="Résultats Des Elections">
+		  		<div class="rounded-circle hoverB3" data-toggle="modal" data-target="#basicExampleModal2" style="width: 150px;height: 150px;" title="Résultats Des Elections">
       				 <i class="fas fa-bullhorn fa-3x" style="color: rgba(3, 169, 244, 0.7);"></i>
       			</div>
 		  </div>
@@ -152,9 +152,17 @@
   </div>
 </div>
 <script type="text/javascript">
+	$(document).ready(function(){
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 			function Publish(id) 
 			{
-				var xhttp = new XMLHttpRequest();
+				let xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 				    if (this.readyState == 4 && this.status == 200) 
 				    {

@@ -1,5 +1,5 @@
 <?php 
-
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,6 +41,12 @@
 				  title: '<img style="width:50px;height:50px;border-radius:50px;position:relative;left:5px;top:15px;" src="assets/img/drapeau.jpg">Bienvenu sur la Plateforme de Vote Electronique du Sénégal',
 				  confirmButtonText:'<a href="connect.php" style="color:white;"><i class="fas fa-arrow-circle-right fa-2x"></i> <span style="position:relative;top:-7px;">Continuer</span></a>',
 				  confirmButtonColor:'#558b2f'
+				}).then((response)=>
+				{
+					if (response.isDismissed) 
+					{
+						window.location = 'connect.php';
+					}
 				})
 		</script>
 </body>

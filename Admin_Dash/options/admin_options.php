@@ -63,6 +63,142 @@
 				$op = "Liste des partis mise à jour";	
 				$ok = 1;
 			}
+			if ($_REQUEST['action']=='new_candidat') 
+			{
+				$cni        = $_REQUEST['cni'];
+				$nom_pere   = $_REQUEST['nom_pere'];	
+				$nom_mere   = $_REQUEST['nom_mere'];	
+				$pro_pere   = $_REQUEST['pro_pere'];	
+				$pro_mere   = $_REQUEST['pro_mere'];
+				$ddn	    = $_REQUEST['ddn'];
+				$ldn	    = $_REQUEST['ldn'];
+				$profession = $_REQUEST['profession'];
+				$pwd        = $_REQUEST['pwd'];
+
+				$cni        = trim($cni);
+				$cni        = stripcslashes($cni);
+				$cni        = htmlspecialchars($cni);
+				$cni        = addcslashes($cni,"'");
+
+				$nom_pere        = trim($nom_pere);
+				$nom_pere        = stripcslashes($nom_pere);
+				$nom_pere        = htmlspecialchars($nom_pere);
+				$nom_pere        = addcslashes($nom_pere,"'");
+
+				$nom_mere        = trim($nom_mere);
+				$nom_mere        = stripcslashes($nom_mere);
+				$nom_mere        = htmlspecialchars($nom_mere);
+				$nom_mere        = addcslashes($nom_mere,"'");
+
+				$pro_pere        = trim($pro_pere);
+				$pro_pere        = stripcslashes($pro_pere);
+				$pro_pere        = htmlspecialchars($pro_pere);
+				$pro_pere        = addcslashes($pro_pere,"'");
+
+				$pro_mere        = trim($pro_mere);
+				$pro_mere        = stripcslashes($pro_mere);
+				$pro_mere        = htmlspecialchars($pro_mere);
+				$pro_mere        = addcslashes($pro_mere,"'");
+
+				$ddn        = trim($ddn);
+				$ddn        = stripcslashes($ddn);
+				$ddn        = htmlspecialchars($ddn);
+				$ddn        = addcslashes($ddn,"'");
+
+				$ldn        = trim($ldn);
+				$ldn        = stripcslashes($ldn);
+				$ldn        = htmlspecialchars($ldn);
+				$ldn        = addcslashes($ldn,"'");
+
+				$profession        = trim($profession);
+				$profession        = stripcslashes($profession);
+				$profession        = htmlspecialchars($profession);
+				$profession        = addcslashes($profession,"'");
+
+				$pwd        = trim($pwd);
+				$pwd        = stripcslashes($pwd);
+				$pwd        = htmlspecialchars($pwd);
+				$pwd        = addcslashes($pwd,"'");
+
+				move_uploaded_file($_FILES['photo']['tmp_name'], '../../assets/img/candidats/'.$cni.$_FILES['photo']['name']);
+				$pdo->query("INSERT INTO personne VALUES(0,'".$cni."','".password_hash($pwd, PASSWORD_DEFAULT)."','cand','".$nom_pere."','".$nom_mere."','".$pro_pere."','".$pro_mere."','".$ddn."','".$ldn."','".$profession."','".$cni.$_FILES['photo']['name']."','".$_REQUEST['circ']."')");
+
+				$query = $pdo->query("SELECT MAX(ID) FROM personne");
+				$last  = $query->fetchAll(PDO::FETCH_NUM);
+
+				$pdo->query("INSERT INTO candidat VALUES(0,'".$last[0][0]."','".$_REQUEST['nom']."','".$_REQUEST['prenom']."','".$_REQUEST['parti']."','".$_REQUEST['date_c']."')");
+
+				$op = "Nouveau Candidat enregistré";	
+				$ok = 1;
+			}
+			if ($_REQUEST['action']=='new_admin') 
+			{
+				$cni        = $_REQUEST['cni'];
+				$nom_pere   = $_REQUEST['nom_pere'];	
+				$nom_mere   = $_REQUEST['nom_mere'];	
+				$pro_pere   = $_REQUEST['pro_pere'];	
+				$pro_mere   = $_REQUEST['pro_mere'];
+				$ddn	    = $_REQUEST['ddn'];
+				$ldn	    = $_REQUEST['ldn'];
+				$profession = $_REQUEST['profession'];
+				$pwd        = $_REQUEST['pwd'];
+
+				$cni        = trim($cni);
+				$cni        = stripcslashes($cni);
+				$cni        = htmlspecialchars($cni);
+				$cni        = addcslashes($cni,"'");
+
+				$nom_pere        = trim($nom_pere);
+				$nom_pere        = stripcslashes($nom_pere);
+				$nom_pere        = htmlspecialchars($nom_pere);
+				$nom_pere        = addcslashes($nom_pere,"'");
+
+				$nom_mere        = trim($nom_mere);
+				$nom_mere        = stripcslashes($nom_mere);
+				$nom_mere        = htmlspecialchars($nom_mere);
+				$nom_mere        = addcslashes($nom_mere,"'");
+
+				$pro_pere        = trim($pro_pere);
+				$pro_pere        = stripcslashes($pro_pere);
+				$pro_pere        = htmlspecialchars($pro_pere);
+				$pro_pere        = addcslashes($pro_pere,"'");
+
+				$pro_mere        = trim($pro_mere);
+				$pro_mere        = stripcslashes($pro_mere);
+				$pro_mere        = htmlspecialchars($pro_mere);
+				$pro_mere        = addcslashes($pro_mere,"'");
+
+				$ddn        = trim($ddn);
+				$ddn        = stripcslashes($ddn);
+				$ddn        = htmlspecialchars($ddn);
+				$ddn        = addcslashes($ddn,"'");
+
+				$ldn        = trim($ldn);
+				$ldn        = stripcslashes($ldn);
+				$ldn        = htmlspecialchars($ldn);
+				$ldn        = addcslashes($ldn,"'");
+
+				$profession        = trim($profession);
+				$profession        = stripcslashes($profession);
+				$profession        = htmlspecialchars($profession);
+				$profession        = addcslashes($profession,"'");
+
+				$pwd        = trim($pwd);
+				$pwd        = stripcslashes($pwd);
+				$pwd        = htmlspecialchars($pwd);
+				$pwd        = addcslashes($pwd,"'");
+
+				move_uploaded_file($_FILES['photo']['tmp_name'], '../../assets/img/electeurs/'.$cni.$_FILES['photo']['name']);
+				$pdo->query("INSERT INTO personne VALUES(0,'".$cni."','".password_hash($pwd, PASSWORD_DEFAULT)."','admin','".$nom_pere."','".$nom_mere."','".$pro_pere."','".$pro_mere."','".$ddn."','".$ldn."','".$profession."','".$cni.$_FILES['photo']['name']."','".$_REQUEST['circ']."')");
+
+				$query = $pdo->query("SELECT MAX(ID) FROM personne");
+				$last  = $query->fetchAll(PDO::FETCH_NUM);
+
+				$pdo->query("INSERT INTO admin VALUES(0,'".$last[0][0]."','".$_REQUEST['nom']."','".$_REQUEST['prenom']."','".$_REQUEST['lib_elec']."')");
+
+				$op = "Nouvel Admin enregistré";	
+				$ok = 1;
+			}
 		}
 			catch(Exception $e)
 			{

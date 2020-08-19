@@ -33,6 +33,25 @@
 {
 	border-color: #aed581;
 }
+.Slide_Left
+{
+	animation: Slide_Left_result 1s;
+}
+@keyframes Slide_Left_result
+{
+	from
+	{
+		opacity: 0;
+		position: absolute;
+		left: 0;
+	}
+	to
+	{
+		opacity: 1;
+		position: absolute;
+		left: 42%;
+	}
+}
 @keyframes Slide_Left
 {
 	from
@@ -68,9 +87,33 @@
 	top: -20px;
 	width: 60px;height: 60px;
 }
+.hoverB3
+{
+	cursor: pointer;
+	transition: all .5s;
+	display: flex;justify-content: center;align-items: center;
+	position: relative;
+	top: -20px;
+	width: 60px;height: 60px;
+}
+.hoverB2
+{
+	cursor: pointer;
+	transition: all .5s;
+	display: flex;justify-content: center;align-items: center;
+	width: 60px;height: 60px;
+}
 .hoverB:hover
 {
 	background-color: #eee;
+}
+.hoverB2:hover
+{
+	background-color: #eee;
+}
+.hoverB3:hover
+{
+	background-color: rgba(244, 67, 54, 0.3);
 }
 .layout
 {

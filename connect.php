@@ -1,5 +1,49 @@
 <?php 
+	session_start();
 
+	if (isset($_REQUEST['logout'])) 
+	{
+		if ($_REQUEST['logout']=='yes') 
+		{	
+				unset($_SESSION['logged']);
+				unset($_SESSION['rolexxx']);
+				unset($_SESSION['idxxx_p']);
+		}
+	}
+
+	if (isset($_SESSION['logged'])) 
+	{
+		if ($_SESSION['logged']=='yeahhh') 
+		{
+			if ($_SESSION['rolexxx']=='admin') 
+			{
+?>
+				<script type="text/javascript">
+					window.location = './Admin_Dash/'
+				</script>
+<?php 
+			}
+			if ($_SESSION['rolexxx']=='can') 
+			{
+?>
+				<script type="text/javascript">
+					window.location = './Candidat/'
+				</script>
+<?php 
+			}
+			if ($_SESSION['rolexxx']=='user') 
+			{
+?>
+				<script type="text/javascript">
+					window.location = './New_Vote/'
+				</script>
+<?php 
+			}
+		}
+	}
+
+	//var_dump($_SESSION);
+	//die();
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,13 +108,14 @@
 				<div class="col-12  d-flex justify-content-center" style="text-align: center;margin-bottom: 15px;">
 					<img class="rounded-circle" src="assets/img/acceuil.jpg" style="width: 250px;height: 250px;-webkit-box-shadow: 5px 5px 20px 5px rgba(255,151,178,0.27);box-shadow: 5px 5px 20px 5px rgba(255,151,178,0.27);">
 				</div>
-				<div class="col-12 col-md-6 col-lg-4"> 
+				<div class="col-12 col-md-6 col-lg-4" style="width: 100%;"> 
+		<form method="post" action="Connexion.php">
 						<div class="row">
 							  <div class="col-12" style="font-size: 13px;">
 							  		CNI*
 							  </div>
 							  <div class="col-12">
-							  		<input type="email" name="login" class="form-control">
+							  		<input type="text" name="login" class="form-control">
 							  </div>			
 						</div>
 						<div class="row" style="margin-top: 10px;">
@@ -82,10 +127,11 @@
 							  </div>			
 						</div>
 						<div class="row d-flex justify-content-around" style="margin-top: 10px;">
-							   <button type="button" class="btn aqua-gradient"><i class="fas fa-plug"></i>&nbsp;Se connecter</button>
+							   <button type="submit" class="btn aqua-gradient"><i class="fas fa-plug"></i>&nbsp;Se connecter</button>
 							   <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-outline-success rounded-pill"><i class="fas fa-plus"></i>&nbsp;S'inscrire</button>
 						</div>
 				</div>
+		</form>
 		</div>
 
 <!-- Modal -->
@@ -117,5 +163,31 @@
 </div>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 		<script type="text/javascript" src="assets/js/all.js"></script>	
+		<script type="text/javascript">
+			if (sessionStorage.getItem('message')=='well') 
+			{
+				Swal.fire({
+				  icon: 'success',
+				  title: 'Votre Inscription a été bien enregistrée. Vous pouvez vous connecter et voter pour votre circonscription.'
+				});
+				sessionStorage.removeItem('message');
+			}
+			if (sessionStorage.getItem('message')=='error') 
+			{
+				Swal.fire({
+				  icon: 'error',
+				  title: 'Oops ... Quelque s\'est mal passé vérifiez que votre CNI est correcte et que vous n\'êtes pas déjà inscrit. Dans le cas contraire utilisez le bouton d\'aide dans le coin supérieur droit de la page de connexion.' 
+				});
+				sessionStorage.removeItem('message');
+			}
+			if (sessionStorage.getItem('message')=='Auth_failed') 
+			{
+				Swal.fire({
+				  icon: 'error',
+				  title: 'Oops ... Echec D\'Authentification' 
+				});
+				sessionStorage.removeItem('message');
+			}
+		</script>
 </body>
 </html>

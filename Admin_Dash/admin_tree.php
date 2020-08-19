@@ -1,3 +1,4 @@
+
 <style type="text/css">
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap');
@@ -61,7 +62,7 @@
 <br>
 <div class="row d-flex justify-content-center align-items-center">
   <div class="col-auto">
-        <img src="../assets/img/vote_sn.png" style="width: 60px;height: 60px;border-radius: 50px;">
+        <a href="../connect.php"><img src="../assets/img/vote_sn.png" style="width: 60px;height: 60px;border-radius: 50px;"></a>
   </div>
   <div class="col-12">
         <hr style="background-color: white;">
@@ -82,11 +83,15 @@
       <span><i class="fas fa-user-tie"></i> Candidature</span>&nbsp;&nbsp;<i class="fas fa-angle-right rotate" style="font-size: 25px;position: relative;top: -9px;"></i>
       <ul class="nested">
         <li onclick="AlterPage('newc.php')"><i class="fas fa-user-plus"></i><div>&nbsp;Candidats</div></li>
-        <li data-toggle="modal" data-target="#basicExampleModal2"><i class="fas fa-user-minus"></i><div>&nbsp;Candidats</div></li>
+        <li data-toggle="modal" data-target="#basicExampleModal2"><i class="fas fa-scroll"></i><div>&nbsp;Candidats</div></li>
       </ul>
     </li>
-    <li class="menu_pack" style="cursor: pointer;">
-      <i class="fas fa-users"></i>&nbsp;&nbsp;Comptes
+    <li class="menu_pack">
+      <span><i class="fas fa-users"></i> Comptes&nbsp;&nbsp;<i class="fas fa-angle-right rotate" style="font-size: 25px;position: relative;top: 3px;"></i>
+      <ul class="nested">
+        <li onclick="AlterPage('list_users.php?type=admin')"><i class="fas fa-user-cog"></i><div>&nbsp;Administrateurs</div></li>
+        <li onclick="AlterPage('list_users.php?type=user')"><i class="fas fa-user-lock"></i><div>&nbsp;Usagers Votants</div></li>
+      </ul>
     </li>
   </ul>
 </div>

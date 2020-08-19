@@ -1,15 +1,22 @@
-<?php 
-	session_start()    ;
+<?php  
 	include '../bd.php';
-	include 'check.php';
 
-	$query = $pdo->query("SELECT ID_personne,nom,prenom,ID FROM candidat");
-	$rows = $query->fetchAll(PDO::FETCH_NUM);
+	if ($_REQUEST['type']=='admin') 
+	{
+		$query = $pdo->query("SELECT ID_personne,nom,prenom,ID FROM admin");
+		$rows = $query->fetchAll(PDO::FETCH_NUM);	
+	}
+	
+	if ($_REQUEST['type']=='user') 
+	{
+		$query = $pdo->query("SELECT ID_personne,nom,prenom,ID FROM usager_votant");
+		$rows = $query->fetchAll(PDO::FETCH_NUM);
+	}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DASHBOARD</title>
+	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Vote_Electronique">
 	<meta name="author" content="ninjamer223">
@@ -28,38 +35,28 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
 	<style type="text/css">
-		body,html
+		html,body
 		{
 			overflow-x: hidden;
+			padding: 5px;
 		}
-	</style>
-</head>
-<body>
-		<div class="rounded-circle hoverB2" onclick="window.location = '../connect.php?logout=yes';" style="width: 60px;height: 60px;position: fixed;bottom: 35px;right: 35px;display: flex;justify-content: center;align-items: center;" title="Déconnexion">
-      				 <i class="fas fa-power-off fa-2x" style="color: red;"></i>
-      	</div>
-		<img id="loader_gif" src="../assets/img/loader1.gif" style="width: 45px;height: 45px;position: fixed;top: 48%;left: 60%;display: none;">
-		<div class="layout">
-			  <div class="left_layout">
-			  		<?php include 'admin_tree.php'; ?>
-			  </div>
-			  <div class="right_layout">
-			  		<iframe id="frameset" src="" style="border:unset;border-radius: 15px;width: 100%;height: 100%;"></iframe>
-			  </div>
-		</div>
-		<!-- Modal Options-->
-<div class="modal fade" id="basicExampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header aqua-gradient">
-        <h5 class="modal-title" id="exampleModalLabel" style="color: white;font-weight: bolder;"><i class="fas fa-users"></i>&nbsp;Liste des Candidats</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <style type="text/css">
-      	tr td,th
+		.intitule
+		{
+			font-size: 13px;
+		}
+		.intitule::after
+		{
+			content: '*';
+		}
+		.myI
+		{
+			border-color: #bdbdbd;
+		}
+		input
+		{
+			margin-bottom: 15px;
+		}
+		tr td,th
 		{
 			text-align: center;
 			font-weight: bolder;
@@ -76,19 +73,43 @@
 		{
 			padding-top: 35px;
 		}
-      </style>
-      <div class="modal-body">
-      		<div class="row">
-          		<table class="table table-hover table-responsive" style="width: 100%;">
+	</style>
+</head>
+<body>
+<div class="row d-flex justify-content-start">
+ 	<div class="col-auto">
+ 			<span style="font-size: 25px;color: #4db6ac;">Administration > Liste du Personnel </span>
+ 	</div>
+</div>
+<?php  
+if (isset($_REQUEST['type'])) 
+{
+	if ($_REQUEST['type']=='admin') 
+	{
+?>
+<div class="row d-flex justify-content-center">
+ 	<div class="col-auto">
+ 			<a href="newa.php"><button type="button" class="btn btn-outline-info rounded-pill">Nouvel Admin &nbsp;<i class="fas fa-user-plus"></i></button></a>
+ 	</div>
+</div>
+<?php 
+	}
+} 
+?>
+<br>
+<div class="container">
+<div class="row d-flex justify-content-center">
+	<div class="col-10">
+<table class="table table-hover table-responsive">
 			 					<thead>
 			 							<tr>
-					        			  	<input class="form-control" id="search" type="text" placeholder="Rechercher dans la liste des Candidats ...">
+					        			  	<input class="form-control" id="search" type="text" placeholder="Rechercher dans la liste ...">
 					        			</tr>
 			 							<tr class="table-info"> 
 			 								<th>#</th>
-			 								<th style="width: 250px;">NOM</th>
-			 								<th style="width: 250px;">PRENOM</th>
-			 								<th style="width: 270px;">OPTIONS</th>
+			 								<th width="50%">NOM</th>
+			 								<th width="50%">PRENOM</th>
+			 								<th width="50%">OPTIONS</th>
 			 							</tr>
 			 					</thead>
 			 					<tbody id="myTable">
@@ -110,25 +131,20 @@
 			 											<?php echo $row[2]; ?>
 			 										</td>
 			 										<td>
-			 											<button type="button" id="<?php echo $row[3]; ?>" id_personne="<?php echo $row[0]; ?>" onclick="_Delete_User(this)" class="btn btn-outline-danger">SUPPRIMER</button>
+			 											<button type="button" id_personne="<?php echo $row[0]; ?>" onclick="_Delete_User(this)" class="btn btn-outline-danger">SUPPRIMER</button>
 			 										</td>
 			 									</tr>
 			 							<?php 
 			 								}
 			 							?>
 			 					</tbody>
-			 			</table>
-			</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-info rounded-pill" data-dismiss="modal">FERMER</button>
-      </div>
-    </div>
-  </div>
+</table>
 </div>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-		<script type="text/javascript" src="../assets/js/all.js"></script>	
-		<script type="text/javascript">
-				$(document).ready(function(){
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
   $("#search").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#myTable tr").filter(function() {
@@ -136,6 +152,7 @@
     });
   });
 });
+
 			function _Delete_User(arg) 
 			{
 				let xhttp = new XMLHttpRequest();
@@ -158,6 +175,6 @@
 				xhttp.open("GET", "./options/del_user.php?id_p="+arg.getAttribute('id_personne'), true);
 				xhttp.send();
 			}
-		</script>
+</script>
 </body>
 </html>
