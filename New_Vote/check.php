@@ -5,9 +5,17 @@
 		{
 ?>
 			<script type="text/javascript">
-				window.location = '../';
+				window.location = '../connect.php';
 			</script>
 <?php 
 		}
+	}
+	if (!isset($_SESSION['logged'])) 
+	{
+?>
+			<script type="text/javascript">
+				window.location = '../connect.php';
+			</script>
+<?php 
 	}
 ?>

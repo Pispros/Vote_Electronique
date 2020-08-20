@@ -44,7 +44,7 @@
 			  		<?php include 'admin_tree.php'; ?>
 			  </div>
 			  <div class="right_layout">
-			  		<iframe id="frameset" src="" style="border:unset;border-radius: 15px;width: 100%;height: 100%;"></iframe>
+			  		<iframe id="frameset" src="home.php" style="border:unset;border-radius: 15px;width: 100%;height: 100%;"></iframe>
 			  </div>
 		</div>
 		<!-- Modal Options-->

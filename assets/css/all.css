@@ -139,3 +139,177 @@
 	-webkit-box-shadow: 2px 2px 13px 5px rgba(0,0,0,0.23); 
 	box-shadow: 2px 2px 13px 5px rgba(0,0,0,0.23);
 }
+
+.ninjamer_vote_card_component
+{
+	display: flex;
+	flex-flow: column nowrap;
+}
+.ninjamer_vote_card
+{
+	width: 100%;
+	height: 350px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	border:solid;
+	border-width: 1px;
+	border-radius: 5px;
+	padding: 10px;
+	cursor: pointer;
+	border-color: white;
+	background-color: white;
+	transition: all 1s;
+	-webkit-box-shadow: 2px 2px 22px 5px rgba(0,0,0,0.2); 
+box-shadow: 2px 2px 22px 5px rgba(0,0,0,0.2);
+}
+.ninjamer_vote_card:hover
+{
+	width: 370px;
+	height: 370px;
+	-webkit-box-shadow: 5px 5px 15px 5px rgba(119,83,72,0.42); 
+	box-shadow: 5px 5px 15px 5px rgba(119,83,72,0.42);
+}
+.ninjamer_vote_card_header
+{
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bolder;
+	transition: all 1s;
+}
+.ninjamer_vote_card_body
+{
+	height: 220px;
+	margin-top: 35px;
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bolder;
+	transition: all 1s;
+}
+.ninjamer_vote_card_body div
+{
+	margin-top: 15px;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+.ninjamer_vote_card_bottom
+{
+	padding-top: 15px;
+	font-weight: bolder;
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+	border-top: dashed;
+	width: 100%;
+	height: 20px;
+	border-width: 1px;
+	transition: all 1s;
+}
+.ninjamer_vote_card_deco
+{
+	margin-top: 1px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	transition: all 1s;
+	padding-bottom: 10px;
+	border-width: 2px;
+	border-color: #4B515D;
+}
+.ninjamer_vote_card_deco_inner
+{
+	transition: all 1s;
+	background-color: white;
+	height: 95px;
+	width: 30px;
+	-webkit-box-shadow: 5px 5px 15px 5px rgba(4,170,116,0.42); 
+	box-shadow: 5px 5px 15px 5px rgba(4,170,116,0.42);
+}
+.d-none
+{
+	display: none;
+}
+.d-fl
+{
+	display: flex;
+}
+
+/*----------------------------------------------------------------------------*/
+.ninjamer_vote_card_2_component
+{
+	display: flex;
+	flex-flow: column nowrap;
+}
+.ninjamer_vote_card_2
+{
+	width: 100%;
+	height: 350px;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	border:solid;
+	border-width: 1px;
+	border-radius: 5px;
+	padding: 10px;
+	cursor: pointer;
+	border-color: white;
+	background-color: white;
+	transition: all 1s;
+	-webkit-box-shadow: 5px 5px 19px 13px rgba(51,104,255,0.26); 
+box-shadow: 5px 5px 19px 13px rgba(51,104,255,0.26);
+}
+.ninjamer_vote_card_2:hover
+{
+	width: 550px;
+	height: 380px;
+	-webkit-box-shadow: 5px 5px 15px 5px rgba(119,83,72,0.42); 
+	box-shadow: 5px 5px 15px 5px rgba(119,83,72,0.42);
+}
+.ninjamer_vote_card_2_header
+{
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bolder;
+	transition: all 1s;
+}
+.ninjamer_vote_card_2_body
+{
+	height: 220px;
+	margin-top: 35px;
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bolder;
+	transition: all 1s;
+}
+.ninjamer_vote_card_2_body div
+{
+	margin-top: 15px;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+.ninjamer_vote_card_2_bottom
+{
+	padding-top: 15px;
+	font-weight: bolder;
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+	border-top: dashed;
+	width: 100%;
+	height: 20px;
+	border-width: 1px;
+	transition: all 1s;
+}
+

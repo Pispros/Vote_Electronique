@@ -62,7 +62,7 @@
 <br>
 <div class="row d-flex justify-content-center align-items-center">
   <div class="col-auto">
-        <a href="../connect.php"><img src="../assets/img/vote_sn.png" style="width: 60px;height: 60px;border-radius: 50px;"></a>
+        <img src="../assets/img/vote_sn.png" style="width: 60px;height: 60px;border-radius: 50px;cursor: pointer;" onclick="AlterPage('home.php');">
   </div>
   <div class="col-12">
         <hr style="background-color: white;">
