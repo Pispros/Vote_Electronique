@@ -2,6 +2,7 @@
 	session_start();
 	include '../bd.php';
 
+	$inc = 1000;
 	$partis = explode(',', $_REQUEST['partis']);
 	for ($i=0; $i <count($partis)-1 ; $i++) 
 	{ 
@@ -13,12 +14,13 @@
 ?>
 <div class="row d-flex justify-content-center">
 	<div class="col-8">
+						<input type="hidden" id="<?php echo $inc; ?>" value="<?php echo $row[0][7]; ?>">
 						<div class="ninjamer_vote_card_2_component" style="margin-bottom: 30px;">
 						  <div class="ninjamer_vote_card_2">
 								<div class="ninjamer_vote_card_2_header">
 									  <img src="../assets/img/partis/<?php echo $row[0][4]; ?>" style="width: 60px;height: 60px;border-radius: 50px;display: inline;">&nbsp;<?php echo $row[0][1]; ?>
 								</div>
-								<div class="ninjamer_vote_card_2_body" style="height: 180px;">
+								<div class="ninjamer_vote_card_2_body" title="Visualiser la profession de foi" style="height: 180px;" onclick="ShowPro('<?php echo $inc++; ?>')">
 									<p>
 										Devise : <?php echo $row[0][5]; ?>
 									</p>

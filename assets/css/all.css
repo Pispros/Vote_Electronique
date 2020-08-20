@@ -289,6 +289,13 @@ box-shadow: 5px 5px 19px 13px rgba(51,104,255,0.26);
 	font-size: 18px;
 	font-weight: bolder;
 	transition: all 1s;
+	align-items: center;
+	display: flex;
+	flex-flow: column wrap;
+}
+.ninjamer_vote_card_2_body:hover
+{
+	background-color: #eee;
 }
 .ninjamer_vote_card_2_body div
 {

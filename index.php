@@ -29,6 +29,12 @@
 			{
 				overflow: hidden;
 			}
+			body
+			{
+				background-image: url(assets/img/test.jpg);
+				background-repeat: no-repeat;
+				background-size: 100% ;
+			}
 		}
 	</style>
 </head>

@@ -42,7 +42,7 @@
 				</script>
 <?php 
 			}
-			if ( $row[0][1]=='can') 
+			if ( $row[0][1]=='cand') 
 			{
 ?>
 				<script type="text/javascript">

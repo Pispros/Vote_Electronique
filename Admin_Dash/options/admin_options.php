@@ -33,7 +33,7 @@
 			if ($_REQUEST['action']=='new_parti') 
 			{
 				move_uploaded_file($_FILES['logo']['tmp_name'], '../../assets/img/partis/'.$_FILES['logo']['name']);
-				$pdo->query("INSERT INTO parti_politique VALUES (0,'".$_POST['nom_p']."','".$_POST['nom_l']."','".$_POST['date']."','".$_FILES['logo']['name']."','".$_POST['devise']."','".$_POST['but']."')");
+				$pdo->query("INSERT INTO parti_politique VALUES (0,'".$_POST['nom_p']."','".$_POST['nom_l']."','".$_POST['date']."','".$_FILES['logo']['name']."','".$_POST['devise']."','".$_POST['but']."','')");
 				//var_dump($_POST);
 				//var_dump($_FILES);
 				$op = "Nouveau Parti ajouté";
@@ -126,7 +126,7 @@
 				$query = $pdo->query("SELECT MAX(ID) FROM personne");
 				$last  = $query->fetchAll(PDO::FETCH_NUM);
 
-				$pdo->query("INSERT INTO candidat VALUES(0,'".$last[0][0]."','".$_REQUEST['nom']."','".$_REQUEST['prenom']."','".$_REQUEST['parti']."','".$_REQUEST['date_c']."')");
+				$pdo->query("INSERT INTO candidat VALUES(0,'".$last[0][0]."','".$_REQUEST['nom']."','".$_REQUEST['prenom']."','".$_REQUEST['parti']."','".$_REQUEST['date_c']."','')");
 
 				$op = "Nouveau Candidat enregistré";	
 				$ok = 1;

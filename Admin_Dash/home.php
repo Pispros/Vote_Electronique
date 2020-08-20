@@ -35,6 +35,11 @@
 <body>
 		<br>
 	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="col-auto">
+				<a target="_blank" href="../Resultats/" style="font-weight: bolder;font-size: 22px;"><button type="button" class="btn peach-gradient"><i class="fas fa-poll"></i>&nbsp;Résultats</button></a>
+			</div>
+		</div>
 		<input type="hidden" id="myID" value="<?php echo $_SESSION['idxxx_p']; ?>">
 		<div class="row">
 			<?php 
@@ -157,6 +162,15 @@
 					};
 					xhttp.open("GET", "vote.php?id_p="+document.getElementById('myID').value+"&id_parti="+arg+'&election='+elec, true);
 					xhttp.send();
+				}
+
+				function ShowPro(arg) 
+				{
+					Swal.fire({
+						  icon: 'info',
+						  title: 'Profession de Foi',
+						  text:document.getElementById(arg).value
+					});  
 				}
 		</script>
 </body>
